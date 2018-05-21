@@ -14,7 +14,7 @@ client.on('error', err => console.error(err));
 
 app.use(cors());
 
-// app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
+app.get('/', (req, res) => res.send('Testing 1, 2, 3'));
 
 app.get('/tasks', (req, res) => {
   client.query(`SELECT * from tasks;`)
