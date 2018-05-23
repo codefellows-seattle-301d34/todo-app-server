@@ -6,7 +6,6 @@ const pg = require('pg');
 
 const app = express();
 const PORT = process.env.PORT;
-const CLIENT_URL = process.env.CLIENT_URL;
 const TOKEN = process.env.TOKEN;
 
 const client = new pg.Client(process.env.DATABASE_URL);
@@ -25,8 +24,6 @@ app.get('/tasks', (req, res) => {
 
 app.get('/admin', (req, res) => res.send(TOKEN === parseInt(req.query.token)))
 // app.get('/admin', (req, res) => console.log(req.query.token))
-
-app.get('*', (req, res) => res.redirect(CLIENT_URL));
 
 app.post('/tasks/add', express.urlencoded(), (req, res) => {
   let {title, description, category, contact, status} = req.body;
